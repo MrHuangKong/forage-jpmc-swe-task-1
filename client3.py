@@ -30,13 +30,16 @@ N = 500
 
 
 def getDataPoint(quote):
-    """ Produce all the needed values to generate a datapoint """
-    """ ------------- Update this function ------------- """
+    """
+    Produce all the needed values to generate a datapoint
+    quote: A dictionary containing stock information
+    """
+
     stock = quote['stock']
     bid_price = float(quote['top_bid']['price'])
     ask_price = float(quote['top_ask']['price'])
-    price = bid_price
-    return stock, bid_price, ask_price, price
+    price = (bid_price + ask_price) / 2
+    return (stock, bid_price, ask_price, price)
 
 
 def getRatio(price_a, price_b):
