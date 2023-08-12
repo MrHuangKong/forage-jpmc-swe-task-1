@@ -39,13 +39,17 @@ def getDataPoint(quote):
     quote: A dictionary containing stock information
     """
 
-    stock = quote['stock']
-    bid_price = float(quote['top_bid']['price'])
-    ask_price = float(quote['top_ask']['price'])
-    price = (bid_price + ask_price) / 2
+    # Check if quote is empty
+    if quote:
+        stock = quote['stock']
+        bid_price = float(quote['top_bid']['price'])
+        ask_price = float(quote['top_ask']['price'])
+        price = (bid_price + ask_price) / 2
 
-    return (stock, bid_price, ask_price, price)
-
+        return (stock, bid_price, ask_price, price)
+    # Return the dictionary if empty
+    else:
+        return quote
 
 def getRatio(price_a, price_b):
     """ Get ratio of price_a and price_b
